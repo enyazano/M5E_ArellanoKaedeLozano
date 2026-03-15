@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+Supplier List
+{% endblock %}
+
+{% block content %}
+
+<h2>List of Suppliers</h2>
+
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Country</th>
+</tr>
+
+{% for supplier in suppliers %}
+<tr>
+    <td>{{ supplier.name }}</td>
+    <td>{{ supplier.city }}</td>
+    <td>{{ supplier.country }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
