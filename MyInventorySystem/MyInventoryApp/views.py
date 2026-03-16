@@ -10,4 +10,8 @@ def view_bottles(request):
     bottles = WaterBottle.objects.all()
     return render(request, "view_bottles.html", {"bottles":bottles})
 
+def add_bottle(request):
+    suppliers = Supplier.objects.all()
+    return render(request, 'add_bottle.html', {'suppliers': suppliers})
+
     
