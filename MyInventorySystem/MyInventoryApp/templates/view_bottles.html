@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+Supplier List
+{% endblock %}
+
+{% block content %}
+
+<h2>List of WaterBottles</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>SKU</th>
+            <th>Brand</th>
+            <th>Cost</th>
+            <th>Size</th>
+            <th>Mouth Size</th>
+            <th>Color</th>
+            <th>Supplier</th>
+            <th>Current Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in bottles %}
+        <tr>
+            <td>{{ b.SKU }}</td>
+            <td>{{ b.brand }}</td>
+            <td>{{ b.cost }}</td>
+            <td>{{ b.size }}</td>
+            <td>{{ b.mouth_size }}</td>
+            <td>{{ b.color }}</td>
+            <td>{{ b.supplied_by.name }}</td>
+            <td>{{ b.current_quantity }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">No water bottles found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
