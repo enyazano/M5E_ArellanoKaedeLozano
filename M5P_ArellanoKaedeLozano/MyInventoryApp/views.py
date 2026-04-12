@@ -8,7 +8,7 @@ def view_supplier(request):
 # View Bottles View
 def view_bottles(request):
     bottles = WaterBottle.objects.all()
-    return render(request, "view_bottles.html", {"bottles":bottles})
+    return render(request, "view_bottles.html", {"water_bottles":bottles})
 
 def add_bottle(request):
     suppliers = Supplier.objects.all()
