@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Supplier, WaterBottle, Account
 
 def view_supplier(request):
@@ -45,7 +45,21 @@ def signup_view(request):
     return render(request, "signup.html")
 
 def manage_account(request, pk):
-    return render(request, "manage_account.html")
+    if not request.session.get("account_id"):
+        return redirect("login")
+    account = get_object_or_404(Account, pk=pk)
+    return render(request, "manage_account.html", {"account": account})
 
 def view_bottle_details(request, pk):
     return render(request, "view_bottle_details.html")
+
+def delete_account(request, pk):
+    if not request.session.get("account_id"):
+        return redirect("login")
+    account = get_object_or_404(Account, pk=pk)
+    account.delete()
+    request.session.flush()
+    return redirect("login")
+
+def change_password(request, pk):
+    return render(request, "change_password.html")
