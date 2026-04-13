@@ -25,3 +25,16 @@ class WaterBottle(models.Model):
 
     def __str__(self):
         return f'SKU: {self.SKU}, Brand: {self.brand}, Mouth Size: {self.mouth_size}, Size: {self.size}, Color: {self.color}, Supplied By: {self.supplied_by.name}, cost: {self.cost}, Current Quantity: {self.current_quantity}'
+    
+class Account(models.Model):
+    username = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
+
+    def getUsername(self):
+        return self.username
+
+    def getPassword(self):
+        return self.password
+
+    def __str__(self):
+        return f'Account: {self.username}'
